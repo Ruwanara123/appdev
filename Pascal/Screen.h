@@ -7,4 +7,5 @@ void setBGcolor(int c);
 void clearScreen(void);
 void gotoXY(int x, int y);
 void setFGcolor(int c);
+//Github
 //VS CODE
