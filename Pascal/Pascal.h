@@ -7,4 +7,4 @@
 //function declarations
 int factorial(int n);
 int n_choose_k(int n, int k);
-void pascal_triangle_by_shoulder_add(int* a, int row, Current_row);
+void pascal_triangle_by_shoulder_add(int* a, int rows, Current_row);
