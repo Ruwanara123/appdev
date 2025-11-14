@@ -8,9 +8,11 @@
 
 int main(void) {
 	int row;
-	printf("Pascal Triangle, enter the number of rows: ");
-	scanf("%d", &row);
-	setBGcolor(WHITE);
+	printf("Pascal triangle, enter the number of rows: ");
+	scanf("%d", &rows);{ 1 };
+	int a[]
+    pascal_triangle_by_shoulder_add(a, rows, 0);
+	/*setBGcolor(WHITE);
 	clearScreen();
 	srand(time(NULL));
 	for (int i = 0; i < row; i++) {
@@ -20,6 +22,6 @@ int main(void) {
 			printf("%4d", n_choose_k(i, j));
 		}
 		printf("\n");
-	}
+	} */
 	//Updated
 }
