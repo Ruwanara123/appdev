@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        #myChart {
+            width: 400px !important;
+            height: 250px !important;
+        }
+    </style>
+
+    <script>
+        function getData() {
+            fetch("http://www.cc.puv.fi/~e2401858/record.txt")
+                .then(r => r.text())
+                .then(text => {
+                    dispData(text);
+                    showChart(text);
+                });
+        }
+
+        function dispData(d) {
+            var p = document.getElementById("text");
+            var a = d.split('\n');
+            p.innerHTML = "";
+            for (var i = 0; i < a.length; i++) {
+                p.innerHTML += a[i] + "<br>";
+            }
+        }
+
+        function showChart(textData) {
+            let lines = textData.trim().split("\n");
+
+            let values1 = [];
+            let values2 = [];
+
+            lines.forEach(line => {
+                let parts = line.split(",");
+                values1.push(Number(parts[1])); 
+                values2.push(Number(parts[2])); 
+            });
+
+            
+            let labels = values1.map((_, i) => "Data " + (i + 1));
+
+            const ctx = document.getElementById("myChart").getContext("2d");
+
+            new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: "Value 1 (Column 2)",
+                            data: values1,
+                            backgroundColor: "rgba(100, 20, 150, 100)"
+                        },
+                        {
+                            label: "Value 2 (Column 3)",
+                            data: values2,
+                            backgroundColor: "rgba(50, 100, 180, 50)"
+                        }
+                    ]
+                }
+            });
+        }
+    </script>
+</head>
+
+<body bgcolor="LightGreen" onload="getData()">
+
+    <p id="text">Welcome to APPDEV</p>
+    <h3>Record.txt Bar Chart</h3>
+
+    <canvas id="myChart" width="400" height="250"></canvas>
+
+</body>
+</html>
